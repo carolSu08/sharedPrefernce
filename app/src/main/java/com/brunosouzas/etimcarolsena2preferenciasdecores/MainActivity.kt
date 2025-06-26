@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.cor1.SetOnClickListener{
             cor = "#E91E63"
-            binding.layoutPricipal.setBackgroundColor(Color.ParseColor(cor))
+            salvarCor(cor)
 
         }
         binding.cor2.SetOnClickListener{
@@ -38,17 +38,19 @@ class MainActivity : AppCompatActivity() {
         }
         binding.cor3.SetOnClickListener{
             cor = "#9C27B0"
+            salvarCor(cor)
 
         }
         binding.cor4.SetOnClickListener{
             cor = "#4CAF50"
+            salvarCor(cor)
 
         }
         binding.cor5.SetOnClickListener{
             cor = "#F44336"
+            salvarCor(cor)
 
         }
-        binding.btnTrocar.setOnCLickListener{
             val preferencias = getSharedPreferences(NOME_ARQUIVO, MODE_PRIVATE)
             val editor = preferencias.edit()
             editor.putString("cor",cor)
@@ -57,12 +59,17 @@ class MainActivity : AppCompatActivity() {
             editor.putInt("idade",16)
             editor.apply()
 
-            Toast.makeText(this,"Cor salva no arquivo  de cores", Toast.LENGTH_LONG).show()
-        }
+            snackBar(view)
     }
 
-    private fun salvarCor(cor: String){
-
+    private fun snackBar(view:View){
+        val snackBar = snackBar.make(view,"core de fundo alterada com sucasso!", snackBar.LEGHT_INDEFINITE)
+        snackBar.setAction("OK"){
+        }
+        snackbar.setActionTextColor(Color.BLUE)
+        snackbar.setActionTextColor(Color.LTGRAY)
+        snackbar.setActionTextColor(Color.GREEN)
+        snackbar.show()
 
     }
 }
